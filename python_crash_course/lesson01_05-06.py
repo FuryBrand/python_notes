@@ -1,3 +1,4 @@
+# if和字典
 # if
 # 5.2 条件测试，每条if语句的核心都是一个值为True或False的表达式，这种表达式被称为条件测试。
 # 5.2.1 检查是否相等
@@ -156,3 +157,28 @@ for language in set(favorite_languages.values()):
 
 # 6.4 嵌套
 # 有时候，需要将一系列字典存储在列表中，或将列表作为值存储在字典中，这称为嵌套。
+# 6.4.1 字典列表
+alien_0 = {'color': 'green', 'points': 5}
+alien_1 = {'color': 'yellow', 'points': 10}
+alien_2 = {'color': 'red', 'points': 15}
+aliens = [alien_0, alien_1, alien_2]
+for alien in aliens:
+    print(alien)
+new_alien = {'color': 'green', 'points': 5, 'speed': 'slow'}
+aliens.append(new_alien)
+for alien in aliens[:5]:
+    print(alien)
+# 6.4.2 在字典中存储列表
+# 存储所点比萨的信息
+pizza = {
+    'crust': 'thick',
+    'toppings': ['mushrooms', 'extra cheese'],
+    }
+# 概述所点的比萨
+print("You ordered a " + pizza['crust'] + "-crust pizza " +
+    "with the following toppings:")
+for topping in pizza['toppings']:
+    print("\t" + topping)
+# 列表和字典的嵌套层级不应太多。如果嵌套层级比前面的示例多得多，很可能有更简单的解决问题的方案。
+# 6.4.3 在字典中存储字典
+# 和上面差不多
