@@ -142,3 +142,17 @@ for name in favorite_languages.keys():
 for name in favorite_languages:
     print(name.title()) #Jen Sarah Phil Edward
 # 6.3.3 按顺序遍历字典中的所有键
+favorite_languages = {'jen': 'python', 'sarah': 'c', 'edward': 'ruby', 'phil': 'python'}
+for name in sorted(favorite_languages.keys()):
+    print(name.title() + ", thank you for taking the poll.")
+# 6.3.4 遍历字典中的所有值
+favorite_languages = {'jen': 'python', 'sarah': 'c', 'edward': 'ruby', 'phil': 'python'}
+for language in sorted(favorite_languages.values()):
+    print(language.title())
+# 用set()来过滤相同的值，set返回一个集合，集合类似于列表但是没有重复项
+favorite_languages = {'jen': 'python', 'sarah': 'c', 'edward': 'ruby', 'phil': 'python'}
+for language in set(favorite_languages.values()):
+    print("use set(): " + language.title())
+
+# 6.4 嵌套
+# 有时候，需要将一系列字典存储在列表中，或将列表作为值存储在字典中，这称为嵌套。
