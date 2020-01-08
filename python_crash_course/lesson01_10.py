@@ -65,5 +65,81 @@ filename = './python_crash_course/attach/programming.txt'
 with open(filename, 'a') as file_object:
     file_object.write("I also love finding meaning in large datasets.\n")
     file_object.write("I love creating apps that can run in a browser.\n")
+    
 # 10.3 异常
 # 10.3.1 处理ZeroDivisionError异常
+# print(5/0)
+"""
+Traceback (most recent call last):
+  File "xixi.py", line 1, in <module>
+    print(5/0)
+ZeroDivisionError: division by zero
+"""
+# 10.3.2 使用try-except代码块
+try:
+    print(5/0)
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+# 10.3.3 使用异常避免崩溃
+# 程序崩溃可不好，但让用户看到traceback也不是好主意。不懂技术的用户会被它们搞糊涂，而且如果用户怀有恶意，他会通过traceback获悉你不希望他知道的信息。例如，他将知道你的程序文件的名称，还将看到部分不能正确运行的代码。有时候，训练有素的攻击者可根据这些信息判断出可对你的代码发起什么样的攻击。
+# 10.3.4 else代码块
+print("Give me two numbers, and I'll divide them.")
+print("Enter 'q' to quit.")
+while True:
+    first_number = input("\nFirst number: ")
+    if first_number == 'q':
+        break
+    second_number = input("Second number: ")
+    try:
+        answer = int(first_number) / int(second_number)
+    except ZeroDivisionError:
+        print("You can't divide by 0!")
+    else:
+        print(answer)
+# try-except-else代码块的工作原理大致如下：Python尝试执行try代码块中的代码；只有可能引发异常的代码才需要放在try语句中。有时候，有一些仅在try代码块成功执行时才需要运行的代码；这些代码应放在else代码块中。except代码块告诉Python，如果它尝试运行try代码块中的代码时引发了指定的异常，该怎么办。
+# 10.3.5 处理FileNotFoundError异常
+filename = 'alice.txt'
+with open(filename) as f_obj:
+    contents = f_obj.read()
+"""
+Traceback (most recent call last):
+  File "xixi.py", line 2, in <module>
+    with open(filename) as f_obj:
+FileNotFoundError: [Errno 2] No such file or directory: 'alice.txt'
+"""
+filename = 'alice.txt'
+try:
+    with open(filename) as f_obj:
+        contents = f_obj.read()
+except FileNotFoundError:
+    msg = "Sorry, the file " + filename + " does not exist."
+    print(msg)
+# 10.3.6 分析文本
+filename = 'alice.txt'
+try:
+    with open(filename) as f_obj:
+        contents = f_obj.read()
+except FileNotFoundError:
+        msg = "Sorry, the file " + filename + " does not exist."
+        print(msg)
+else:
+    # 计算文件大致包含多少个单词
+    words = contents.split()
+    num_words = len(words)
+    print("The file " + filename + " has about " + str(num_words) + " words.")
+# 10.3.7 使用多个文件
+# 将上一节的代码包装成一个方法，进行多次调用。
+# 在这个示例中，使用try-except代码块提供了两个重要的优点：
+# 1.避免让用户看到traceback；
+# 2.让程序能够继续分析能够找到的其他文件。如果不捕获因找不到siddhartha.txt而引发的FileNotFoundError异常，用户将看到完整的traceback，而程序将在尝试分析 Siddhartha 后停止运行——根本不分析 Moby Dick 和 Little Women。
+# 10.3.8 失败时一声不吭
+# 在except止呕使用pass来忽略错误
+filename = 'alice.txt'
+try:
+    with open(filename) as f_obj:
+        contents = f_obj.read()
+except FileNotFoundError:
+    pass
+# 10.3.9 决定报告那些错误
+
+# 10.4 存储数据
