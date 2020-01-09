@@ -1,5 +1,6 @@
-# 文件和异常
+# 文件、异常和测试
 
+import json
 # 10.1 从文件中读取数据
 # 10.1.1 读取整个文件
 with open('./python_crash_course/attach/pi_digits.txt') as file_object:
@@ -145,3 +146,41 @@ except FileNotFoundError:
 # 10.4 存储数据
 # JSON来分享数据。JSON（JavaScript Object Notation）格式最初是为JavaScript开发的，但随后成了一种常见格式，被包括Python在内的众多语言采用。
 # 10.4.1 使用json.dump()和json.load()
+# 将数据以JSON的形式写入到文件中
+#import json
+numbers = [2, 3, 5, 7, 11, 13]
+filename = 'numbers.json'
+with open(filename, 'w') as f_obj:
+    json.dump(numbers, f_obj)
+# 从文件中读取JSON
+filename = 'numbers.json'
+with open(filename) as f_obj:
+    numbers = json.load(f_obj)
+print(numbers)
+# 10.4.2 保存和读取用户生成的数据
+# import json
+# 如果以前存储了用户名，就加载它
+# 否则，就提示用户输入用户名并存储它
+filename = 'username.json'
+try:
+    with open(filename) as f_obj:
+        username = json.load(f_obj)
+except FileNotFoundError:
+    username = input("What is your name? ")
+    with open(filename, 'w') as f_obj:
+        json.dump(username, f_obj)
+        print("We'll remember you when you come back, " + username + "!")
+else:
+    print("Welcome back, " + username + "!")
+# 10.4.3 重构
+# 代码能够正确地运行，但可做进一步的改进——将代码划分为一系列完成具体工作的函数。这样的过程被称为重构。
+# 重构让代码更清晰、更易于理解、更容易扩展。
+# 上一节的代码可以重构成3个方法。
+
+# 11.1 测试函数
+
+# 11.1.1 单元测试和测试用例
+# Python标准库中的模块unittest提供了代码测试工具。单元测试用于核实函数的某个方面没有问题；
+# 测试用例是一组单元测试，这些单元测试一起核实函数在各种情形下的行为都符合要求。良好的测试用例考虑到了函数可能收到的各种输入，包含针对所有这些情形的测试。
+# 全覆盖式测试用例包含一整套单元测试，涵盖了各种可能的函数使用方式。对于大型项目，要实现全覆盖可能很难。通常，最初只要针对代码的重要行为编写测试即可，等项目被广泛使用时再考虑全覆盖。
+# 11.1.2 可通过的测试
