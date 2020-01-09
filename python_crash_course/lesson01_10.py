@@ -143,3 +143,5 @@ except FileNotFoundError:
 # 10.3.9 决定报告那些错误
 
 # 10.4 存储数据
+# JSON来分享数据。JSON（JavaScript Object Notation）格式最初是为JavaScript开发的，但随后成了一种常见格式，被包括Python在内的众多语言采用。
+# 10.4.1 使用json.dump()和json.load()
