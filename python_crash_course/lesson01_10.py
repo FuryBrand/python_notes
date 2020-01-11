@@ -178,7 +178,6 @@ else:
 # 上一节的代码可以重构成3个方法。
 
 # 11.1 测试函数
-
 # 11.1.1 单元测试和测试用例
 # Python标准库中的模块unittest提供了代码测试工具。单元测试用于核实函数的某个方面没有问题；
 # 测试用例是一组单元测试，这些单元测试一起核实函数在各种情形下的行为都符合要求。良好的测试用例考虑到了函数可能收到的各种输入，包含针对所有这些情形的测试。
@@ -191,5 +190,24 @@ else:
 # 改呗，如果测试用例没问题的话，那自然是源码的问题。
 # 11.1.5 添加新测试
 # 在原来的文件的类中继续增加新的方法就行了
+
 # 11.2 测试类
 # 11.2.1 各种断言方法
+# 常见的6种断言：
+# assertEqual(a, b) # 核实a == b
+# assertNotEqual(a, b) # 核实 a != b
+# assertTrue(x) # 核实x为True
+# assertFalse(x) # 核实x为False
+# assertIn(item, list) # 核实item在list中
+# assertNotIn(item, list) #核实item不在list中
+# 11.2.2 一个要测试的类
+# ./codes/survey.py是提供基础服务的类
+# ./codes/language_survey.py是使用的类
+# 11.2.3 测试AnonymousSurvey类
+# ./codes/test_survey.py是测试基础服务的类。参考class TestAnonymousSurvey(unittest.TestCase)
+# 11.2.4 方法setUp()
+# 如果你在TestCase类中包含了方法setUp()，Python将先运行它，再运行各个以test_打头的方法。从而提取通用的东西来减少编码重复。
+# ./codes/test_survey.py。参考class TestAnonymousSurveyPlus(unittest.TestCase):
+
+# 11.3 小结
+
